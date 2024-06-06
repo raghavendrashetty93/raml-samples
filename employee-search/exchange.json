@@ -1,0 +1,10 @@
+{
+  "main": "employee-search.raml",
+  "name": "employee-search",
+  "groupId": "137c2019-fcd5-41b8-8525-313ae789beef",
+  "assetId": "employee-search",
+  "version": "1.0.0",
+  "classifier": "raml",
+  "tags": [],
+  "descriptorVersion": "1.0.0"
+}

@@ -1,0 +1,81 @@
+#%RAML 1.0
+title: employee-search
+mediaType: application/json
+version: 1.0.0
+protocols: HTTP
+
+types:
+  queryWithLastName:
+    properties:  
+      offset:
+        type: number
+        example: 1
+        format: int
+      limit:
+        type: number
+        example: 10
+        format: int
+      firstName:
+        type: string
+        example: "Raghav"
+      lastName:
+        type: string
+        example: "Shetty"
+      group?:
+        type: string
+        example: "Technology"
+      sort?:
+        type: string
+        default: "id"
+        example: "id"
+      order?:
+        type: string
+        default: "asc"
+        example: "asc"
+  queryWithBusinessGroup:
+    properties:  
+      offset:
+        type: number
+        example: 1
+        format: int
+      limit:
+        type: number
+        example: 10
+        format: int
+      firstName:
+        type: string
+        example: "Raghav"
+      lastName?:
+        type: string
+        example: "Shetty"
+      group:
+        type: string
+        example: "Technology"
+      sort?:
+        type: string
+        default: "firstName"
+        example: "firstName"
+      order?:
+        type: string
+        default: "asc"
+        example: "asc"
+
+/search:
+  get:
+    queryString: queryWithLastName | queryWithBusinessGroup
+    responses:
+      200:
+        body:
+          type: object
+          properties:
+            nextOffset: integer
+            morePages: boolean
+            results:
+              type: array
+              items:
+                properties:
+                  recNum: number
+                  firstName: string
+                  lastName: string
+                  city: string
+                  country: string
